@@ -1,0 +1,14 @@
+<h1>Check out all the amazing courses that we had!</h1>
+
+{{#if currentUser.boss}} 
+<a href="courses/add">Add Course</a>
+{{/if}}
+
+{{#each courses}} 
+<h2>{{name}}</h2>
+<p>{{description}}</p>
+
+{{#if enrolled}}<div class="">You are a part of this class!</div>{{/if}}
+{{#if staff}}<button>Remove</button> <button>Edit</button>{{/if}}
+
+{{/each}}
