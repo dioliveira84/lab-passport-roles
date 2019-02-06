@@ -1,0 +1,9 @@
+<h1>Check out the list of everyone who have connected with Ironhack!</h1>
+
+{{#if staff}}<a href="">Add user</a>{{/if}}
+
+{{#each participants}} 
+<h3>{{name}}</h3>
+{{#if staff}}<p>{{role}}</p>
+<button>Edit</button>{{/if}}
+{{/each}}
