@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -21,38 +21,46 @@ router.post("/profile-add", (req, res, next) => {
     return;
   }
 
-  User.findOne({ "username": username })
-  .then(user => {
-    if (user !== null) {
-      res.render("profile-add", {
-        msgError: "The username already exists!"
-      });
-      return;
-    }
-
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
-
-    const newUser = new User({
-      username: username,
-      password: hashPass,
-      name: name,
-      role: role
-    });
-
-    newUser.save()
-    .then(user => {
-      res.redirect("/profile-add");
+  User.findOne({
+      "username": username
     })
-    .catch(err => { throw new Error(err)});
-  })
-  .catch(err => { throw new Error(err)});
+    .then(user => {
+      if (user !== null) {
+        res.render("profile-add", {
+          msgError: "The username already exists!"
+        });
+        return;
+      }
+
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(password, salt);
+
+      const newUser = new User({
+        username: username,
+        password: hashPass,
+        name: name,
+        role: role
+      });
+
+      newUser.save()
+        .then(user => {
+          res.redirect("/profile-add");
+        })
+        .catch(err => {
+          throw new Error(err)
+        });
+    })
+    .catch(err => {
+      throw new Error(err)
+    });
 
 });
 
 
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", {'errorMessage': req.flash('error')});
+  res.render("auth/login", {
+    'errorMessage': req.flash('error')
+  });
 });
 
 router.post("/login", passport.authenticate("local", {
