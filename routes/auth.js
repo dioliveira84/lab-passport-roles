@@ -6,8 +6,13 @@ const bcryptSalt = 10;
 const passport = require("passport");
 
 
+router.get("/profile/add", (req, res, next) => {
+  res.render("profile-add", {
+    'errorMessage': req.flash('error')
+  });
+});
 
-router.post("/profile-add", (req, res, next) => {
+router.post("/profile/add", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const name = req.body.name;
@@ -44,7 +49,7 @@ router.post("/profile-add", (req, res, next) => {
 
       newUser.save()
         .then(user => {
-          res.redirect("/profile-add");
+          res.redirect("/profile/add");
         })
         .catch(err => {
           throw new Error(err)

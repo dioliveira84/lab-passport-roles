@@ -14,4 +14,8 @@ router.get("/courses", (req, res, next) => {
   res.send("OK, you got it");
 });
 
+router.get("/participants", (req, res, next) => {
+  res.send("OK, you got it");
+});
+
 module.exports = router;
