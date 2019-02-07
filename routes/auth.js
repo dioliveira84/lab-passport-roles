@@ -70,10 +70,18 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-
 router.get("/logout", (req, res, next) => {
   req.logout();
   res.redirect("/");
 });
+
+router.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect: '/courses',
+    failureRedirect: '/login'
+  }));
 
 module.exports = router;

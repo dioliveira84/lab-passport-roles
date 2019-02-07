@@ -10,4 +10,8 @@ router.get("/", (req, res, next) => {
   res.render("home");
 });
 
+router.get("/courses", (req, res, next) => {
+  res.send("OK, you got it");
+});
+
 module.exports = router;
