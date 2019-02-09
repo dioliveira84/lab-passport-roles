@@ -1,12 +1,19 @@
-<form id="form" action="/profile/edit" method="POST">
-  <label for="name">Name</label><br>
-  <input type="text" name="name" placeholder="Add your Name">
+{{#with user}}
+<form id="form" action="/profile/edit?user_id={{_id}}" method="POST">
+  <label form="name">Name</label><br>
+  <input type="text" name="name" value="{{name}}">
 
-  <label for="password">Password</label><br>
-  <input type="password" name="password">
+  {{!-- <label for="password">Password</label><br> --}}
+  {{!-- <input type="password" name="password"> --}}
 
-  {{#if staff}}
-  <label for="role">Role Type</label><br>
+{{#if ../notBoss}}
+  <label form="role">Role</label><br>
+  <input type="text" name="role" value="{{role}}" disabled>
+{{/if}}
+
+{{#if ../staff}}
+  
+ <label for="role">Role Type</label><br>
   <select name='role'>
     <option value="BOSS">BOSS</option>
     <option value="DEVELOPER">DEVELOPER</option>
@@ -14,11 +21,15 @@
     <option value="STUDENT">STUDENT</option>
   </select>
   {{/if}}
+  {{/with}}
+  <button type="submit" class="edit-button-red">Edit</button>
+  {{!-- <p><a href="/profile/edit?user_id={{_id}}" class="edit-button">Edit</a></p> --}}
+
   <br>
 
-  {{#if msgError}}
+  {{!-- {{#if msgError}}
   <div class="error-message">{{ msgError }}</div>
-  {{/if}}
+  {{/if}} --}}
 
-  <button>Create account</button>
+  {{!-- <button>Create account</button> --}}
 </form>

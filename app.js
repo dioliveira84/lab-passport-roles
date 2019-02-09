@@ -130,11 +130,11 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-const index = require('./routes/index');
-app.use('/', index);
-
 const auth = require('./routes/auth');
 app.use('/', auth);
+
+const index = require('./routes/index');
+app.use('/', index);
 
 module.exports = app;
 
