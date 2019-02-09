@@ -1,9 +1,13 @@
 <h1>Check out the list of everyone who have connected with Ironhack!</h1>
+<a href="/profile/edit?user_id={{currentUser._id}}" class="edit-button">Edit Own Profile</a>
+{{#if staff}}<a href="profile/add">Add user</a>{{/if}}
 
-{{#if staff}}<a href="">Add user</a>{{/if}}
-
-{{#each participants}} 
+{{#each users}} 
 <h3>{{name}}</h3>
-{{#if staff}}<p>{{role}}</p>
-<button>Edit</button>{{/if}}
+{{#if ../staff}}<p>{{role}}</p>
+<p><a href="/profile/edit?user_id={{_id}}" class="edit-button">Edit</a></p>
+<form action="/profile/delete" method="POST">
+<input type="hidden" name="id" value="{{_id}}">
+<button type="submit" class="edit-button-red">Delete</button></form>
+{{/if}}
 {{/each}}

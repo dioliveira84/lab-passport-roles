@@ -25,6 +25,16 @@ a {
   border-radius: 6px;
 }
 
+.edit-button-red {
+  margin-left:20px; 
+  color: #fff;
+  text-decoration: none;
+  padding: 2px 4px;
+  background-color: red;
+  border-radius: 6px;
+}
+
+
 .review-item {
   border-bottom: 1px solid grey;
   margin: 10px 0;
@@ -91,4 +101,33 @@ a {
   margin: 20px auto;
   padding: 20px;
   width: 100%;
+}
+
+ul {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #2081C3;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
 }

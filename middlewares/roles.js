@@ -21,7 +21,7 @@ const rolesMiddleware = {
   },
   checkStaff: () => {
     return (req, res, next) => {
-      if (req.isAuthenticated() && req.user.role === "TA" || req.user.role === "BOSS"|| req.user.role === "DEVELOPER") {
+      if (req.isAuthenticated() && req.user.role === "TA" || req.user.role === "BOSS") {
         return next();
       } else {
         res.send('You are not authorized')
